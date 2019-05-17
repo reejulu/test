@@ -106,6 +106,8 @@ public class EjercicioPresionarColoresVersion1 extends AppCompatActivity {
                 Log.i("test", "numero de veces " + num_veces);
                 if (num_veces == 6) {
                     continuar(cajatocada);
+                    Button b = findViewById(R.id.boton_no);
+                    b.setVisibility(View.VISIBLE);
                     //salir();
                 }
             } else {
@@ -124,7 +126,6 @@ public class EjercicioPresionarColoresVersion1 extends AppCompatActivity {
         x.setVisibility(View.VISIBLE);
         x.append(" continuar? si",0,14);
         inicio = false;
-       // finalizar.setVisibility(View.VISIBLE);
     }
 
     public void salir(){
