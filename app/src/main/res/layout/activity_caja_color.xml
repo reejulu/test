@@ -4,94 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EjercicioPresionarColoresVersion1"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    tools:context=".CajaColor">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EjercicioPresionarColores"
     android:orientation="vertical"
-    >
+    tools:context=".CajaColor">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:id="@+id/bloque01"
-        >
-        <LinearLayout
-            android:id="@+id/bloque1"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:layout_height="match_parent"
-            android:onClick="marcarColor"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/bloque2"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimaryDark"
-            android:layout_height="match_parent"
-            android:onClick="marcarColor"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bloque3"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/ic_launcher_foreground"
-        android:layout_weight="1"
-        android:onClick="marcarColor"
+        android:layout_weight="33"
         android:orientation="horizontal">
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:id="@+id/bloque4"
+        <com.example.milinear.LinearLayoutCustom
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@color/amarillo"
             android:layout_height="match_parent"
-            android:onClick="marcarColor"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/bloque5"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@color/azul"
-            android:layout_height="match_parent"
-            android:onClick="marcarColor"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/bloque6"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="50"
             android:background="@color/rojo"
+            android:onClick="cambiaColor">
+        </com.example.milinear.LinearLayoutCustom>
+        <com.example.milinear.LinearLayoutCustom
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:onClick="marcarColor"
-            android:orientation="horizontal">
-
-        </LinearLayout>
+            android:layout_weight="50"
+            android:background="@color/azul"
+            android:onClick="cambiaColor">
+        </com.example.milinear.LinearLayoutCustom>
 
     </LinearLayout>
-</LinearLayout>
 
+    <com.example.milinear.LinearLayoutCustom
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="33"
+        android:background="@color/amarillo"
+        android:onClick="cambiaColor">
+    </com.example.milinear.LinearLayoutCustom>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="34"
+        android:orientation="horizontal">
+        <com.example.milinear.LinearLayoutCustom
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="33"
+            android:background="@color/aguamarina"
+            android:onClick="cambiaColor"></com.example.milinear.LinearLayoutCustom>
+        <com.example.milinear.LinearLayoutCustom
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="33"
+            android:background="@color/verdeEsmeralda"
+            android:onClick="cambiaColor"></com.example.milinear.LinearLayoutCustom>
+        <com.example.milinear.LinearLayoutCustom
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="34"
+            android:background="@color/dukeBlue"
+            android:onClick="cambiaColor"></com.example.milinear.LinearLayoutCustom>
+    </LinearLayout>
+
+</LinearLayout>
     <Button
         android:id="@+id/boton_iniciar"
         android:layout_width="wrap_content"

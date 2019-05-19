@@ -9,16 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EjercicioPresionarColoresVersion1">
+        <activity android:name=".CajaColor"
+            android:label="@string/CajaColor"
+            android:alwaysRetainTaskState="true"
+            android:launchMode="singleInstance"></activity>
+        <activity
+            android:name=".SplitView"
+            android:alwaysRetainTaskState="true"
+            android:label="@string/SplitView"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LinearActivity">
-        </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".EjercicioPresionarColoresVersion1"
+            android:alwaysRetainTaskState="true"
+            android:launchMode="singleInstance"></activity>
+        <activity
+            android:name=".EjercicioPresionarColores"
+            android:label="@string/EjercicioPresionarColores"
+            android:alwaysRetainTaskState="true"
+            android:launchMode="singleInstance"></activity>
+        <activity android:name=".LinearActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

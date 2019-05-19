@@ -8,5 +8,11 @@
     <color name="rojo">#D81B60</color>
     <color name="amarillo">#FFEB3B</color>
     <color name="azul">#3F51B5</color>
-
+    <color name="white">#FFF</color>
+    <color name="verdeEsmeralda">#287233</color>
+    <color name="UCLABlue">#536895</color>
+    <color name="black">#000</color>
+    <color name="aguamarina">#9fd5d1</color>
+    <color name="dukeBlue">#001a57</color>
+    <color name="cian">#00ffff</color>
 </resources>
