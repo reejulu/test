@@ -4,6 +4,7 @@ package com.example.milinear;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class SplitView extends AppCompatActivity {
     Menu menureferencia;
     int contador = 1;  // valor inicial
     int contador1 = 0;
+    int contadorColores = 1;
 
     // https://github.com/flcarballeda/CajaColores.git
 
@@ -90,7 +92,7 @@ public class SplitView extends AppCompatActivity {
 
     private void mostrarLayout (View vista){
 
-            //Log.d(getClass().getCanonicalName(), vista.getClass().getCanonicalName());
+            //Log.i(getClass().getCanonicalName(), vista.getClass().getCanonicalName());
             Log.i("MIAPP", vista.getClass().getCanonicalName());
 
 
@@ -112,6 +114,14 @@ public class SplitView extends AppCompatActivity {
     }
 
     public void dividir(View view) {
+
+        int randomColor;
+        Random rand = new Random();
+        int r1 = rand.nextInt(255);
+        int g = rand.nextInt(255);
+        int b = rand.nextInt(255);
+        randomColor = Color.rgb(r1,g,b);
+        //View hijo1.setBackgroundColor(randomColor);
         contador = contador + 1;   // cada vez se multipica por 2
                                    // i.e 1-vez = 1* 2= 2
                                    //     2-vez = 1 + 1*2 = 3
@@ -131,11 +141,15 @@ public class SplitView extends AppCompatActivity {
         LinearLayout padre = (LinearLayout)view;
 //        LinearLayout padre = (LinearLayout)findViewById( view.getId());
         LinearLayout hijo1 = new LinearLayout(this);
-        hijo1.setId( newId());
+        int x = newId();
+        Log.i("MIAPP", "newId es : "+ x);
+        hijo1.setId( x);
         LinearLayout hijo2 = new LinearLayout(this);
-        hijo2.setId( newId());
+        int y = newId();
+        Log.i("MIAPP", "newId es : "+ y);
+        hijo2.setId( y);
         if ( padre.getOrientation() == LinearLayout.VERTICAL) {
-            Log.d("SplitView_dividir", "Vertical");
+            Log.i("MIAPP", "Vertical");
 //        android:layout_width="match_parent"
 //        android:layout_height="0dp"
 //        android:layout_weight="1"
@@ -146,7 +160,7 @@ public class SplitView extends AppCompatActivity {
             hijo2.setOrientation( LinearLayout.HORIZONTAL);
             hijo2.setLayoutParams(parametros);
         } else {
-            Log.d("SplitView_dividir", "Horizontal");
+            Log.i("MIAPP", "Horizontal");
 //            android:layout_width="0dp"
 //            android:layout_height="match_parent"
 //            android:layout_weight="1"
@@ -157,6 +171,21 @@ public class SplitView extends AppCompatActivity {
             hijo2.setOrientation( LinearLayout.VERTICAL);
             hijo2.setLayoutParams( parametros);
         }
+
+    //   hijo1.setBackgroundColor(randomColor);
+        hijo2.setBackgroundColor(randomColor);
+        contadorColores = contadorColores + 1;
+        Log.i("MIAPP","Color numero : "+contadorColores);
+//        hijo1.setBackgroundColor( ((ColorDrawable) padre.getBackground()).getColor());
+     //  hijo2.setBackgroundColor( getResources().getColor( COLORES[ indexColor]));
+        hijo1.setVisibility( View.VISIBLE);
+        hijo2.setVisibility( View.VISIBLE);
+        indexColor++;
+        if( indexColor == COLORES.length) {
+            indexColor = 0;
+        }
+        padre.addView( hijo1);
+        padre.addView( hijo2);
         hijo1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 dividir(v);
@@ -168,17 +197,6 @@ public class SplitView extends AppCompatActivity {
                 dividir(v);
             }
         });
-
-        hijo1.setBackgroundColor( ((ColorDrawable) padre.getBackground()).getColor());
-        hijo2.setBackgroundColor( getResources().getColor( COLORES[ indexColor]));
-        hijo1.setVisibility( View.VISIBLE);
-        hijo2.setVisibility( View.VISIBLE);
-        indexColor++;
-        if( indexColor == COLORES.length) {
-            indexColor = 0;
-        }
-        padre.addView( hijo1);
-        padre.addView( hijo2);
     }
 
 
