@@ -14,4 +14,8 @@
         android:icon="@drawable/terminar"
         android:title="Finalizar"
         app:showAsAction="always"/>
+    <item android:id="@+id/reiniciarpartida"
+        android:icon="@drawable/reiniciar"
+        android:title="Reiniciar Partida"
+        app:showAsAction="always"/>
 </menu>

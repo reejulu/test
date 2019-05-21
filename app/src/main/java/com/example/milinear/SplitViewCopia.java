@@ -42,6 +42,8 @@ public class SplitViewCopia extends AppCompatActivity {
     long t1Start;
     long t1Pause;
     double t1Duraciont1Startt1Pause = 0;
+    String Texto;
+    String Texto2;
     // https://github.com/flcarballeda/CajaColores.git
 
     @Override
@@ -92,8 +94,8 @@ public class SplitViewCopia extends AppCompatActivity {
                 }
                 Log.i("MIAPP","tiempo de juego : "+ t1Duraciont1Startt1Pause);
 
-                String Texto = String.format("Duracion en segundos de la App es: %1$.3f", t1Duraciont1Startt1Pause);
-                String Texto2 = Texto + " Segundos";
+                Texto = String.format("Duracion en segundos de la App es: %1$.3f", t1Duraciont1Startt1Pause);
+                Texto2 = Texto + " Segundos";
                 Log.i("MIAPP","tiempo de juego : "+ Texto2 );
                  vista = findViewById(R.id.root);
                  texto = findViewById(R.id.txtpausar);
@@ -116,12 +118,30 @@ public class SplitViewCopia extends AppCompatActivity {
                 boton.setVisibility(View.INVISIBLE);
                 Log.i("MIAPP","Toco version reniciar");
                 break;
+            case R.id.reiniciarpartida:
+                // Se para la ejecucion del juego actual y se lanza de nuevo desde el inicio
+                //startActivity(new Intent(this, CajaColor.class));
+                this.finish();
+                Intent intent = new Intent(SplitViewCopia.this, SplitViewCopia.class);
+                //contardorToques = getIntent().getIntExtra("toques",2);  // numero de toques
+                //cajasportoque = getIntent().getIntExtra("cajas",2);
+                intent.putExtra("toques", contardorToques);
+                intent.putExtra("cajas", cajasportoque);
+                startActivity(intent);
+                Log.i("MIAPP","Toco version Reiniciar Partida");
+                break;
             case R.id.finalizar:
                 // Se para la ejecucion del juego actual y se lanza de nuevo desde el inicio
                 //startActivity(new Intent(this, CajaColor.class));
                 this.finish();
+                Intent intent1 = new Intent(SplitViewCopia.this, TiempoTranscurrido.class);
+                //contardorToques = getIntent().getIntExtra("toques",2);  // numero de toques
+                //cajasportoque = getIntent().getIntExtra("cajas",2);
+                intent1.putExtra("duracionensegundos",Texto2 );
+                startActivity(intent1);
                 Log.i("MIAPP","Toco version finalizar");
                 break;
+
 
             default: Log.i("MIAPP","Raro...raroooooo");
         }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TiempoTranscurrido">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="5"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/textoduracion"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="El tiempo de juego ha sido de :"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/tiempoensegundos"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="poner tiempo en segundos"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+    <Button
+        android:id="@+id/btnvolver"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:onClick="volver"
+        android:text="Volver"/>
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="5"
+    >
+
+</LinearLayout>
+
+</LinearLayout>
