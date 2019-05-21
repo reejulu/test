@@ -5,7 +5,6 @@ package com.example.milinear;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 
 import android.support.v7.app.AppCompatActivity;
 
@@ -113,35 +112,33 @@ public class SplitView extends AppCompatActivity {
 
     }
 
-    public void dividir(View view) {
-
-        int randomColor;
+    private int randomColor() {
+        int randomColor1;
         Random rand = new Random();
         int r1 = rand.nextInt(255);
         int g = rand.nextInt(255);
         int b = rand.nextInt(255);
-        randomColor = Color.rgb(r1,g,b);
-        //View hijo1.setBackgroundColor(randomColor);
+        randomColor1 = Color.rgb(r1,g,b);
+        return randomColor1;
+
+    }
+
+    public void dividir(View view) {
+
         contador = contador + 1;   // cada vez se multipica por 2
                                    // i.e 1-vez = 1* 2= 2
                                    //     2-vez = 1 + 1*2 = 3
         Log.i("MIAPP","Contador de cuadros  es: "+contador);
+        limite(contador);
+        asignarId(view);
+    }
 
-        if (contador > 50){
-            ViewGroup vista_raiz = findViewById(R.id.root);
-            Log.i("MIAPP","el numero de hijos es :" +vista_raiz.getChildCount());
-            vista_raiz.getChildCount();
-            mostrarLayout(vista_raiz);
-            Toast.makeText(this,"Hasta Luego Lucas",Toast.LENGTH_LONG).show();
-            this.finish();
-            startActivity(new Intent(this, EjercicioPresionarColoresVersion1.class));
-            Log.i("MIAPP","Toco version original");
-
-        }
+    public void asignarId(View view) {
         LinearLayout padre = (LinearLayout)view;
 //        LinearLayout padre = (LinearLayout)findViewById( view.getId());
         LinearLayout hijo1 = new LinearLayout(this);
-        int x = newId();
+        // al primer Hijo le asigno el id del padre
+        int x = padre.getId();
         Log.i("MIAPP", "newId es : "+ x);
         hijo1.setId( x);
         LinearLayout hijo2 = new LinearLayout(this);
@@ -172,33 +169,56 @@ public class SplitView extends AppCompatActivity {
             hijo2.setLayoutParams( parametros);
         }
 
-    //   hijo1.setBackgroundColor(randomColor);
-        hijo2.setBackgroundColor(randomColor);
+        //   hijo1.setBackgroundColor(randomColor);
+        int randomColor2 = randomColor();
+        hijo2.setBackgroundColor(randomColor2);
         contadorColores = contadorColores + 1;
         Log.i("MIAPP","Color numero : "+contadorColores);
 //        hijo1.setBackgroundColor( ((ColorDrawable) padre.getBackground()).getColor());
-     //  hijo2.setBackgroundColor( getResources().getColor( COLORES[ indexColor]));
-        hijo1.setVisibility( View.VISIBLE);
-        hijo2.setVisibility( View.VISIBLE);
-        indexColor++;
-        if( indexColor == COLORES.length) {
-            indexColor = 0;
-        }
-        padre.addView( hijo1);
-        padre.addView( hijo2);
-        hijo1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                dividir(v);
-            }
-        });
+        //  hijo2.setBackgroundColor( getResources().getColor( COLORES[ indexColor]));
 
-        hijo2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                dividir(v);
-            }
-        });
+        padre.setVisibility(View.VISIBLE);
+        //     hijo1.setVisibility( View.VISIBLE);
+        hijo2.setVisibility( View.VISIBLE);
+        //     indexColor++;
+        //     if( indexColor == COLORES.length) {
+        //         indexColor = 0;
+        //     }
+        onClick(padre,hijo1,hijo2);
     }
 
+    public void limite(int contador) {
+        if (this.contador > 50){
+            ViewGroup vista_raiz = findViewById(R.id.root);
+            Log.i("MIAPP","el numero de hijos es :" +vista_raiz.getChildCount());
+            vista_raiz.getChildCount();
+            mostrarLayout(vista_raiz);
+            Toast.makeText(this,"Hasta Luego Lucas",Toast.LENGTH_LONG).show();
+            this.finish();
+            startActivity(new Intent(this, EjercicioPresionarColoresVersion1.class));
+            Log.i("MIAPP","Toco version original");
+
+        }
+
+    }
+
+
+public void onClick(LinearLayout padre, LinearLayout hijo1, LinearLayout hijo2) {
+    padre.addView( hijo1);
+    padre.addView( hijo2);
+    hijo1.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            dividir(v);
+        }
+    });
+
+
+    hijo2.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            dividir(v);
+        }
+    });
+}
 
 
     /**

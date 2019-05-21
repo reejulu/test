@@ -9,15 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CajaColor"
-            android:label="@string/CajaColor"
-            android:alwaysRetainTaskState="true"
-            android:launchMode="singleInstance"></activity>
-        <activity
-            android:name=".SplitView"
-            android:alwaysRetainTaskState="true"
-            android:label="@string/SplitView"
-            android:launchMode="singleInstance">
+        <activity android:name=".SplitViewCopia"></activity>
+        <activity android:name=".InfinitoPrevio" />
+        <activity android:name=".ElegirJuego">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,14 +19,24 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".CajaColor"
+            android:alwaysRetainTaskState="true"
+            android:label="@string/CajaColor"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".SplitView"
+            android:alwaysRetainTaskState="true"
+            android:label="@string/SplitView"
+            android:launchMode="singleInstance" />
+        <activity
             android:name=".EjercicioPresionarColoresVersion1"
             android:alwaysRetainTaskState="true"
-            android:launchMode="singleInstance"></activity>
+            android:launchMode="singleInstance" />
         <activity
             android:name=".EjercicioPresionarColores"
-            android:label="@string/EjercicioPresionarColores"
             android:alwaysRetainTaskState="true"
-            android:launchMode="singleInstance"></activity>
+            android:label="@string/EjercicioPresionarColores"
+            android:launchMode="singleInstance" />
         <activity android:name=".LinearActivity" />
         <activity android:name=".MainActivity" />
     </application>
