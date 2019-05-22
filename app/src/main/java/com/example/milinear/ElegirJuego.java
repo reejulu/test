@@ -13,7 +13,7 @@ import java.lang.reflect.Array;
 
 public class ElegirJuego extends AppCompatActivity {
 
-    String NOMBRES [] = {"Elegir juego","Infinito","Otro juego" };
+    String NOMBRES [] = {"Elegir juego","Infinito","Otro juego", "IntentImplicito","EnviarWhatsapp","CrearAlarma"};
     private boolean isSpinnerInitial = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +30,29 @@ public class ElegirJuego extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("MIAPP","la posicion selecciona es : " +i);
                 String juego = (String) spinner.getAdapter().getItem(i);
-                if (isSpinnerInitial == false) {
-                    if (juego.contains("Infinito")) {
-                        startActivity(new Intent(ElegirJuego.this, InfinitoPrevio.class));
-                        spinner.setSelection(0);
-                        Log.i("MIAPP","el valor de isSpinnerInitial es : "+ isSpinnerInitial);
-                    }else {
-                        if (juego.contains("Elegir")){
-                            // No hacer nada
-                        }else {
+
+
+                if (isSpinnerInitial == false)
+                    switch (juego) {
+                        case "Infinito":
+                            startActivity(new Intent(ElegirJuego.this, InfinitoPrevio.class));
+                            spinner.setSelection(0);
+                            Log.i("MIAPP", "el valor de isSpinnerInitial es : " + isSpinnerInitial);
+                            break;
+                        case "Otro juego":
                             startActivity(new Intent(ElegirJuego.this, CajaColor.class));
-                        }
+                            break;
+                        case "IntentImplicito":
+                            startActivity(new Intent(ElegirJuego.this, IntentImplicito.class));
+                            break;
+                        case "EnviarWhatsapp":
+                            startActivity(new Intent(ElegirJuego.this, EnviarWhatsapp.class));
+                        case "CrearAlarma":
+                            startActivity(new Intent(ElegirJuego.this, CrearAlarma.class));
+                        default:    // "Elegir"
+                            break;
                     }
-                }else {
+                else {
                     isSpinnerInitial = false;
                 }
             }

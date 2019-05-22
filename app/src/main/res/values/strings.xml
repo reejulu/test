@@ -3,4 +3,9 @@
     <string name="SplitView">Infinito</string>
     <string name="CajaColor">LinearCarlos</string>
     <string name="EjercicioPresionarColores">OnClick</string>
+
+    <string name="text_name">Introduce busqueda:</string>
+
+    <string name="text_hint">Texto a buscar.</string>
+
 </resources>
