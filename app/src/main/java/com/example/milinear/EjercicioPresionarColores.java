@@ -230,6 +230,7 @@ public class EjercicioPresionarColores extends AppCompatActivity {
         duracionmostar.setVisibility(View.VISIBLE);
         duracionmostar.setText(Texto2);
     }
+
     public void marcarColor(View view) {
 
     if (inicio == true) {

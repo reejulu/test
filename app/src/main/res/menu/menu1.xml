@@ -2,6 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" >
+    <item android:id="@+id/resultados"
+        android:icon="@drawable/resultados"
+        android:title="Resultados"
+        app:showAsAction="always"/>
+    <item android:id="@+id/jugarahora"
+        android:icon="@drawable/jugarahora"
+        android:title="Jugar Ahora"
+        app:showAsAction="always"/>
     <item android:id="@+id/pause"
         android:icon="@drawable/pause"
         android:title="Pausar Infinito"

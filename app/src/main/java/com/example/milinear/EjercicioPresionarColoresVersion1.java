@@ -1,6 +1,7 @@
 package com.example.milinear;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.PersistableBundle;
 import android.provider.Settings;
@@ -163,12 +164,17 @@ public class EjercicioPresionarColoresVersion1 extends AppCompatActivity {
         salir();
     }
 
+    public void cambiarinicio() {
+        inicio = true;
+    }
+
     public void marcarColor(View view) {
         // Si ya se ha pulsado el Boton Inicio entonces --true
         // eso quiere decir que empezamos a poder cambiar cajas de colores
 
         //id = view.findViewById(R.id.bloque1);
         LinearLayout x = (LinearLayout) view;
+        Log.i("MIAPP","EjercicioPresionarColeresVersion1-marcarColor -inicio es : "+ inicio);
         if (inicio == true) {
             if (ids.size() == 0) {
                 ids.add(x.getId());
@@ -198,7 +204,8 @@ public class EjercicioPresionarColoresVersion1 extends AppCompatActivity {
 
             //  if (inicio == true) {
             if (bloqueclick == false) {
-                view.setBackgroundColor(getResources().getColor(R.color.negro));
+                view.setBackgroundColor(Color.red(100000));
+               // view.setBackgroundColor(getResources().getColor(R.color.negro));
                 bloqueclick = true;
                 Log.i("MIAPP", "numero de veces " + num_veces);
                 if (num_veces == 6) {

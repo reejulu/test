@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.milinear">
+
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
+        <activity android:name=".Resultados"></activity>
         <activity android:name=".CrearAlarma">
             <intent-filter>
                 <action android:name="android.intent.action.SET_ALARM" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".EnviarWhatsapp" />
         <activity android:name=".IntentImplicito" />
         <activity android:name=".TiempoTranscurrido" />
-        <activity android:name=".SplitViewCopia" />
+        <activity android:name=".SplitViewCopia"
+            android:alwaysRetainTaskState="true"
+            android:launchMode="singleInstance" />
         <activity android:name=".InfinitoPrevio" />
         <activity android:name=".ElegirJuego">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

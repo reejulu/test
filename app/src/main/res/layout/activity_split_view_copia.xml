@@ -19,13 +19,21 @@
 
 
 </LinearLayout>
-
+<EditText
+    android:id="@+id/editnombrejugador"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="invisible"
+    android:layout_gravity="center"
+    android:hint="Escribe nombre jugador"
+    android:layout_marginBottom="50sp"/>
     <TextView
         android:id="@+id/txtpausar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/aguamarina"
         android:visibility="invisible"
+        android:inputType="textMultiLine"
         android:text="Juego Pausado, si desea continuar pulse continuar"
         android:layout_gravity="center"
         android:gravity="center"/>

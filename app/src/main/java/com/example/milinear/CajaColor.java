@@ -1,7 +1,5 @@
 package com.example.milinear;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,31 +23,58 @@ public class CajaColor extends AppCompatActivity {
     Button finalizar;
     int numeroActivities;
     double recordPartida = 0;
+    int jugarpartida;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_caja_color);
+        Log.i("MIAPP","Estoy en CajaColor- onCreate");
+        jugarpartida =getIntent().getIntExtra("jugarpartida",0);
+
+        if (jugarpartida == 10){
+            // si la clase es llamada para jugar desde SplitViewCopia
+            // previamente ya se uso para generar las cajas y tuvo que entrar por el otro caso diferente de 10
+
+            setContentView(R.layout.activity_split_view_copia);
+            Object pepe = getIntent().clone();
+            LinearLayout vista;
+            TextView texto;
+            Button boton;
+            vista = findViewById(R.id.root);
+            texto = findViewById(R.id.txtpausar);
+            boton = findViewById(R.id.btnContinuar);
+
+            //vista.setVisibility(View.VISIBLE);
+            //texto.setVisibility(View.VISIBLE);
+            //boton.setVisibility(View.VISIBLE);
+
+        }else {
+            // si la clase es llamada para dividir en cajas
+            setContentView(R.layout.activity_caja_color);
+        }
+
         this.color = getResources().getColor(R.color.negro);
         this.colorblanco = getResources().getColor(R.color.blanco);
         this.veces = 0;
         iniciarotra = false;
         // NO MOSTRAR TEXTOS OCULTOS , solo para ver resultado de tiempo y record
-        TextView duracionmostar = findViewById(R.id.txtmostrarduracion);
-        duracionmostar.setVisibility(View.INVISIBLE);
-        TextView mostrarRecord = findViewById(R.id.txtmostrarrecord);
-        mostrarRecord.setVisibility(View.INVISIBLE);
-
+        if (jugarpartida == 0) {
+            TextView duracionmostar = findViewById(R.id.txtmostrarduracion);
+            duracionmostar.setVisibility(View.INVISIBLE);
+            TextView mostrarRecord = findViewById(R.id.txtmostrarrecord);
+            mostrarRecord.setVisibility(View.INVISIBLE);
+            if(getIntent().getExtras() != null) {
+                Bundle extras = getIntent().getExtras();
+                //numeroActivities = numeroActivities + 1;
+                Log.i("MIAPP","hemos llamado mas de una vez a esta activity");
+                recordPartida = extras.getDouble("key");
+            } else {
+                numeroActivities = 0;
+            }
+        }
         // CUANDO ES LA PRIMERA VEZ QUE SE EJECUTA ESTA ACTIVIDAD EL INTENT NO TIENE CAMPOS EXTRA ,
         // solo para ver resultado de tiempo y record
-        if(getIntent().getExtras() != null) {
-            Bundle extras = getIntent().getExtras();
-            //numeroActivities = numeroActivities + 1;
-            Log.i("MIAPP","hemos llamado mas de una vez a esta activity");
-            recordPartida = extras.getDouble("key");
-        } else {
-            numeroActivities = 0;
-        }
+
     }
 
     // **************************************************************************************
@@ -64,13 +89,13 @@ public class CajaColor extends AppCompatActivity {
         //    menu.add("Fulanito");
         // para guardar el menu ,,,por si luego lo necesito
         //    this.menureferencia = menu;
-
+        Log.i("MIAPP","Estoy en CajaColor- onCreateOptionsMenu");
         return super.onCreateOptionsMenu(menu);
     }
     // RECIBE EL EVENTO DEL MENU ELEGIDO
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+        Log.i("MIAPP","Estoy en CajaColor- onOptionsItemSelected");
         switch (item.getItemId()){
             case R.id.version_infinito:
                 // lanzar la version infinito
@@ -99,7 +124,10 @@ public class CajaColor extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
     public void iniciar (View view){
+        Log.i("MIAPP","Estoy en CajaColor- metodo -iniciar-");
         if (iniciarotra == true){
             iniciarotra();
         }
@@ -116,6 +144,7 @@ public class CajaColor extends AppCompatActivity {
         b.setVisibility(View.INVISIBLE);
     }
     public void iniciarotra() {
+        Log.i("MIAPP","Estoy en CajaColor- metodo -iniciarotra-");
         // ANTES DE LANZAR DE NUEVO LA ACTIVITY GUARDAMOS LOS VALORES INDICADOS Y CERRAMOS LA ACTUAL
         Intent intent = new Intent(CajaColor.this, CajaColor.class);
         Bundle bundle = new Bundle();
@@ -129,7 +158,8 @@ public class CajaColor extends AppCompatActivity {
     }
 
     public void cambiaColor(View v){
-
+        Log.i("MIAPP","Estoy en CajaColor- metodo-cambiaColor-");
+        Log.i("MIAPP","Estoy en CajaColor- inicio es : "+ inicio);
         if (inicio == true) {
             LinearLayoutCustom caja = (LinearLayoutCustom) v;
             if (caja.isUsado()) {
@@ -165,6 +195,7 @@ public class CajaColor extends AppCompatActivity {
     }
 
     public void mostrarDuracion() {
+        Log.i("MIAPP","Estoy en CajaColor- mostrarDuracion-");
         long tFinal = System.currentTimeMillis();
 
         double tDuracion1 = (tFinal - tInicioBoton) / 1000d;
@@ -197,6 +228,7 @@ public class CajaColor extends AppCompatActivity {
     }
 
     private void mostarRecord( double tDuracion1, int record) {
+        Log.i("MIAPP","Estoy en CajaColor- mostrarRecord");
         String Texto1;
         if (record == 1){
             // nuevo record
@@ -212,10 +244,12 @@ public class CajaColor extends AppCompatActivity {
         duracionmostar.setText(Texto2);
     }
     public void finalizarsi (View view){
+        Log.i("MIAPP","Estoy en CajaColor- metodo-finalizarsi-");
         finalizar = (Button) view;
         salir();
     }
     public void salir(){
+        Log.i("MIAPP","Estoy en CajaColor- metodo-salir-");
         //mostrarDuracion();
         // CIERRO VERSION ORIGINAL
         this.finish();
